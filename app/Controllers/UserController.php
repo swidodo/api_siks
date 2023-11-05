@@ -17,10 +17,49 @@ class UserController extends BaseController
 
         $users = new UserModel;
         $id = $this->request->getVar('user_id');
-        $data = $users->join('data_guru','data_guru.user_id = users.id','left')
-                    ->join('siswa','siswa.user_id = users.id','left')
-                    ->find($id);
-        return $this->respond(['users' => $data], 200);
+        
+        $usr = $users->where('id',$id)->get()->getRow();
+        if ($usr != null){
+            if ($usr->initial == "guru"){
+                $data = $users->join('data_guru','data_guru.user_id = users.id','left')
+                            ->find($id);
+                if($data){
+                    $res = [
+                        'success' => true,
+                        'data'    => $data
+                    ];
+                    return $this->respond(['data' => $res], 200);
+                }else{
+                    $res = [
+                        'success' => false,
+                        'message'    => 'Data Not Found !'
+                    ];
+                    return $this->respond(['data' => $res], 401);
+                }
+            }else{
+                $data = $users->join('siswa','siswa.user_id = users.id','left')
+                              ->find($id);
+                if($data){
+                    $res = [
+                        'success' => true,
+                        'data'    => $data
+                    ];
+                    return $this->respond(['data' => $res], 200);
+                }else{
+                    $res = [
+                        'success' => false,
+                        'message'    => 'Data Not Found !'
+                    ];
+                    return $this->respond(['data' => $res], 401);
+                }
+            }
+        }else{
+            $res = [
+                'success' => false,
+                'message'    => 'Data Not Found !'
+            ];
+            return $this->respond(['data' => $res], 401);
+        }
     }
     public function update_profile(){
         $users  = new UserModel;
