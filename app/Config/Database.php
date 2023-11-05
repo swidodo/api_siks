@@ -30,7 +30,7 @@ class Database extends Config
         // 'username'     => 'root',
         // 'password'     => '',
         // 'database'     => 'db_data_sekolah',
-        'username'     => ' vxdqvmgp_matering_shools',
+        'username'     => 'vxdqvmgp_matering_shools',
         'password'     => 'bri4B163&',
         'database'     => 'vxdqvmgp_schools',
         'DBDriver'     => 'MySQLi',
