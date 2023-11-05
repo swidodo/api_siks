@@ -27,9 +27,9 @@ class Database extends Config
     public array $default = [
         'DSN'          => '',
         'hostname'     => 'localhost',
-        'username'     => 'root',
-        'password'     => '',
-        'database'     => 'db_data_sekolah',
+        'username'     => 'vxdqvmgp_matering_shools',
+        'password'     => '?Qn3le863swidodo',
+        'database'     => 'vxdqvmgp_schools',
         'DBDriver'     => 'MySQLi',
         'DBPrefix'     => '',
         'pConnect'     => false,
