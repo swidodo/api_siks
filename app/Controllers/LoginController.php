@@ -46,8 +46,10 @@ class LoginController extends BaseController
  
         $response = [
             'success'   => true,
+            'token'     => $token,
+            'id'        => $user['id'],
+            'email'     => $user['email'],
             'message'   => 'Login Succesful',
-            'token'     => $token
         ];
          
         return $this->respond($response, 200);
